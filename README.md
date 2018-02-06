@@ -103,7 +103,7 @@ val guidForKeyPath :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.Guid,exn>
 
-val timeSpanOffsetForKeyPath :
+val timeSpanForKeyPath :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.TimeSpan,exn>
 

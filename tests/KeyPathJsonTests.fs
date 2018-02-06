@@ -153,6 +153,16 @@ let ``Test date time offset for keypath`` () =
   |> requal <| Ok dto
 
 [<Fact>]
+let ``Test time span for keypath`` () =
+  let ts = TimeSpan(1000000000000L)
+  let obj = JsonObject ()
+  let kv = new KeyValuePair<string, JsonValue>("key", JsonPrimitive(ts))
+  obj.Add(kv)
+  obj
+  |> Json.timeSpanForKeyPath "key"
+  |> requal <| Ok ts
+
+[<Fact>]
 let ``Test uri for keypath`` () =
   let uri = Uri("http://github.com")
   let obj = JsonObject ()

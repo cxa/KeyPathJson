@@ -139,9 +139,9 @@ module Json =
     let converter: JsonValue -> Guid = JsonValue.op_Implicit
     valueForKeyPath' keyPath jsonValue JsonType.Number converter
 
-  let timeSpanOffsetForKeyPath keyPath jsonValue =
+  let timeSpanForKeyPath keyPath jsonValue =
     let converter: JsonValue -> TimeSpan = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.String converter
+    valueForKeyPath' keyPath jsonValue JsonType.Number converter
 
   let uriForKeyPath keyPath jsonValue =
     let converter: JsonValue -> Uri = JsonValue.op_Implicit

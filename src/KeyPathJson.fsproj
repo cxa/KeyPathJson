@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>KeyPathJson</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>Neo Xian-an CHEN</Authors>
+    <Description>Safe and key-path-able JSON navigator for System.Json</Description>
+    <Copyright>2018 © Neo Xian-an CHEN</Copyright>
+    <PackageLicenseUrl>https://github.com/cxa/KeyPathJson/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/cxa/KeyPathJson</PackageProjectUrl>
+    <PackageTags>Json fsharp keypath</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <OtherFlags> --simpleresolution --nocopyfsharpcore</OtherFlags>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="KeyPathJson.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Json" Version="4.4.0" />
+  </ItemGroup>
+</Project>

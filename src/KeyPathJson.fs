@@ -44,12 +44,12 @@ module Json =
     | k::rest, Ok jval ->
       loop rest <| valueFor' k jval
 
-  let valueForKeyPath (keyPath:string) jsonValue =
+  let value (keyPath:string) jsonValue =
     let keys = keyPath.Split '.' |> Array.toList
     loop keys <| Ok jsonValue
 
-  let private valueForKeyPath' keyPath jsonValue expectType converter =
-    valueForKeyPath keyPath jsonValue
+  let private value' keyPath jsonValue expectType converter =
+    value keyPath jsonValue
     |> Result.bind (fun jval ->
       match getType jval with
       | t when t = expectType ->
@@ -63,86 +63,86 @@ module Json =
         Error <| failwithf "Mismatch type for key %A" keyPath
     )
 
-  let boolForKeyPath keyPath jsonValue =
+  let bool keyPath jsonValue =
     let converter: JsonValue -> bool = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Boolean converter
+    value' keyPath jsonValue JsonType.Boolean converter
 
-  let byteForKeyPath keyPath jsonValue =
+  let byte keyPath jsonValue =
     let converter: JsonValue -> byte = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let sbyteForKeyPath keyPath jsonValue =
+  let sbyte keyPath jsonValue =
     let converter: JsonValue -> sbyte = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let int8ForKeyPath keyPath jsonValue =
+  let int8 keyPath jsonValue =
     let converter: JsonValue -> int8 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let uint8ForKeyPath keyPath jsonValue =
+  let uint8 keyPath jsonValue =
     let converter: JsonValue -> uint8 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let int16ForKeyPath keyPath jsonValue =
+  let int16 keyPath jsonValue =
     let converter: JsonValue -> int16 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let uint16ForKeyPath keyPath jsonValue =
+  let uint16 keyPath jsonValue =
     let converter: JsonValue -> uint16 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let int32ForKeyPath keyPath jsonValue =
+  let int32 keyPath jsonValue =
     let converter: JsonValue -> int = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let uint32ForKeyPath keyPath jsonValue =
+  let uint32 keyPath jsonValue =
     let converter: JsonValue -> uint32 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let int64ForKeyPath keyPath jsonValue =
+  let int64 keyPath jsonValue =
     let converter: JsonValue -> int64 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let uint64ForKeyPath keyPath jsonValue =
+  let uint64 keyPath jsonValue =
     let converter: JsonValue -> uint64 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let decimalForKeyPath keyPath jsonValue =
+  let decimal keyPath jsonValue =
     let converter: JsonValue -> decimal = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let doubleForKeyPath keyPath jsonValue =
+  let double keyPath jsonValue =
     let converter: JsonValue -> double = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let float32ForKeyPath keyPath jsonValue =
+  let float32 keyPath jsonValue =
     let converter: JsonValue -> float32 = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let charForKeyPath keyPath jsonValue =
+  let char keyPath jsonValue =
     let converter: JsonValue -> char = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.String converter
+    value' keyPath jsonValue JsonType.String converter
 
-  let stringForKeyPath keyPath jsonValue =
+  let string keyPath jsonValue =
     let converter: JsonValue -> string = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.String converter
+    value' keyPath jsonValue JsonType.String converter
 
-  let dateTimeForKeyPath keyPath jsonValue =
+  let dateTime keyPath jsonValue =
     let converter: JsonValue -> DateTime = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.String converter
+    value' keyPath jsonValue JsonType.String converter
 
-  let dateTimeOffsetForKeyPath keyPath jsonValue =
+  let dateTimeOffset keyPath jsonValue =
     let converter: JsonValue -> DateTimeOffset = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let guidForKeyPath keyPath jsonValue =
+  let guid keyPath jsonValue =
     let converter: JsonValue -> Guid = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let timeSpanForKeyPath keyPath jsonValue =
+  let timeSpan keyPath jsonValue =
     let converter: JsonValue -> TimeSpan = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter
 
-  let uriForKeyPath keyPath jsonValue =
+  let uri keyPath jsonValue =
     let converter: JsonValue -> Uri = JsonValue.op_Implicit
-    valueForKeyPath' keyPath jsonValue JsonType.Number converter
+    value' keyPath jsonValue JsonType.Number converter

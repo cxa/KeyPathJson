@@ -29,7 +29,7 @@ open KeyPathJson
 
 let result =
   Json.parse jsonStr
-  |> Json.stringForKeyPath "menu.popup.menuitem.1.value"
+  |> Json.string "menu.popup.menuitem.1.value"
 
 // result is a Result<string, exn>
 ```
@@ -39,75 +39,75 @@ Onething to aware is that you must use number as key to access array, like `menu
 Except accessing string, `KeyPathJson` also provides:
 
 ```fsharp
-val valueForKeyPath :
+val value :
       keyPath:string ->
         jsonValue:JsonValue -> Result<JsonValue,exn>
 
-val boolForKeyPath :
+val bool :
   keyPath:string -> jsonValue:JsonValue -> Result<bool,exn>
 
-val byteForKeyPath :
+val byte :
   keyPath:string -> jsonValue:JsonValue -> Result<byte,exn>
 
-val sbyteForKeyPath :
+val sbyte :
   keyPath:string -> jsonValue:JsonValue -> Result<sbyte,exn>
 
-val int8ForKeyPath :
+val int8 :
   keyPath:string -> jsonValue:JsonValue -> Result<int8,exn>
 
-val uint8ForKeyPath :
+val uint8 :
   keyPath:string -> jsonValue:JsonValue -> Result<uint8,exn>
 
-val int16ForKeyPath :
+val int16 :
   keyPath:string -> jsonValue:JsonValue -> Result<int16,exn>
 
-val uint16ForKeyPath :
+val uint16 :
   keyPath:string -> jsonValue:JsonValue -> Result<uint16,exn>
 
-val int32ForKeyPath :
+val int32 :
   keyPath:string -> jsonValue:JsonValue -> Result<int,exn>
 
-val uint32ForKeyPath :
+val uint32 :
   keyPath:string -> jsonValue:JsonValue -> Result<uint32,exn>
 
-val int64ForKeyPath :
+val int64 :
   keyPath:string -> jsonValue:JsonValue -> Result<int64,exn>
 
-val uint64ForKeyPath :
+val uint64 :
   keyPath:string -> jsonValue:JsonValue -> Result<uint64,exn>
 
-val decimalForKeyPath :
+val decimal :
   keyPath:string -> jsonValue:JsonValue -> Result<decimal,exn>
 
-val doubleForKeyPath :
+val double :
   keyPath:string -> jsonValue:JsonValue -> Result<double,exn>
 
-val float32ForKeyPath :
+val float32 :
   keyPath:string -> jsonValue:JsonValue -> Result<float32,exn>
 
-val charForKeyPath :
+val char :
   keyPath:string -> jsonValue:JsonValue -> Result<char,exn>
 
-val stringForKeyPath :
+val string :
   keyPath:string -> jsonValue:JsonValue -> Result<string,exn>
 
-val dateTimeForKeyPath :
+val dateTime :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.DateTime,exn>
 
-val dateTimeOffsetForKeyPath :
+val dateTimeOffset :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.DateTimeOffset,exn>
 
-val guidForKeyPath :
+val guid :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.Guid,exn>
 
-val timeSpanForKeyPath :
+val timeSpan :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.TimeSpan,exn>
 
-val uriForKeyPath :
+val uri :
   keyPath:string ->
     jsonValue:JsonValue -> Result<System.Uri,exn>
 ```

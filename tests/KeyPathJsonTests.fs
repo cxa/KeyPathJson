@@ -16,7 +16,7 @@ let ``Test bool for keypath`` () =
   let t = true
   sprintf """{ "a": {"b": %b}}""" t
   |> Json.parse
-  |> Result.bind (Json.boolForKeyPath "a.b")
+  |> Result.bind (Json.bool "a.b")
   |> requal <| Ok t
 
 [<Fact>]
@@ -24,7 +24,7 @@ let ``Test bool for keypath with root array`` () =
   let t = true
   sprintf """[%b]""" t
   |> Json.parse
-  |> Result.bind (Json.boolForKeyPath "0")
+  |> Result.bind (Json.bool "0")
   |> requal <| Ok t
 
 [<Fact>]
@@ -32,7 +32,7 @@ let ``Test byte for keypath`` () =
   let b = Byte.MaxValue
   sprintf """{ "a": {"b": [%i]}}""" b
   |> Json.parse
-  |> Result.bind (Json.byteForKeyPath "a.b.0")
+  |> Result.bind (Json.byte "a.b.0")
   |> requal <| Ok b
 
 [<Fact>]
@@ -40,7 +40,7 @@ let ``Test sbyte for keypath`` () =
   let sb = SByte.MaxValue
   sprintf """{ "a": {"b": [%i]}}""" sb
   |> Json.parse
-  |> Result.bind (Json.sbyteForKeyPath "a.b.0")
+  |> Result.bind (Json.sbyte "a.b.0")
   |> requal <| Ok sb
 
 [<Fact>]
@@ -48,7 +48,7 @@ let ``Test int16 for keypath`` () =
   let i = Int16.MaxValue
   sprintf """{ "a": {"b": %i}}""" i
   |> Json.parse
-  |> Result.bind (Json.int16ForKeyPath "a.b")
+  |> Result.bind (Json.int16 "a.b")
   |> requal <| Ok i
 
 [<Fact>]
@@ -56,7 +56,7 @@ let ``Test uint16 for keypath`` () =
   let ui = UInt16.MaxValue
   sprintf """{ "a": {"b": %i}}""" ui
   |> Json.parse
-  |> Result.bind (Json.uint16ForKeyPath "a.b")
+  |> Result.bind (Json.uint16 "a.b")
   |> requal <| Ok ui
 
 [<Fact>]
@@ -64,7 +64,7 @@ let ``Test int32 for keypath`` () =
   let i = Int32.MaxValue
   sprintf """{ "a": {"b": %i}}""" i
   |> Json.parse
-  |> Result.bind (Json.int32ForKeyPath "a.b")
+  |> Result.bind (Json.int32 "a.b")
   |> requal <| Ok i
 
 [<Fact>]
@@ -72,7 +72,7 @@ let ``Test uint32 for keypath`` () =
   let ui = UInt32.MaxValue
   sprintf """{ "a": {"b": %i}}""" ui
   |> Json.parse
-  |> Result.bind (Json.uint32ForKeyPath "a.b")
+  |> Result.bind (Json.uint32 "a.b")
   |> requal <| Ok ui
 
 [<Fact>]
@@ -80,7 +80,7 @@ let ``Test int64 for keypath`` () =
   let i = Int64.MaxValue
   sprintf """{ "a": {"b": %i}}""" i
   |> Json.parse
-  |> Result.bind (Json.int64ForKeyPath "a.b")
+  |> Result.bind (Json.int64 "a.b")
   |> requal <| Ok i
 
 [<Fact>]
@@ -88,7 +88,7 @@ let ``Test uint64 for keypath`` () =
   let ui = UInt64.MaxValue
   sprintf """{ "a": {"b": %i}}""" ui
   |> Json.parse
-  |> Result.bind (Json.uint64ForKeyPath "a.b")
+  |> Result.bind (Json.uint64 "a.b")
   |> requal <| Ok ui
 
 [<Fact>]
@@ -96,7 +96,7 @@ let ``Test double for keypath`` () =
   let d = 3.14
   sprintf """{ "a": {"b": %f}}""" d
   |> Json.parse
-  |> Result.bind (Json.doubleForKeyPath "a.b")
+  |> Result.bind (Json.double "a.b")
   |> requal <| Ok d
 
 [<Fact>]
@@ -104,7 +104,7 @@ let ``Test float for keypath`` () =
   let f = 3.14f
   sprintf """{ "a": {"b": %f}}""" f
   |> Json.parse
-  |> Result.bind (Json.float32ForKeyPath "a.b")
+  |> Result.bind (Json.float32 "a.b")
   |> requal <| Ok f
 
 [<Fact>]
@@ -112,7 +112,7 @@ let ``Test decimal for keypath`` () =
   let d = 0.7833m
   sprintf """{ "a": {"b": %M}}""" d
   |> Json.parse
-  |> Result.bind (Json.decimalForKeyPath "a.b")
+  |> Result.bind (Json.decimal "a.b")
   |> requal <| Ok d
 
 [<Fact>]
@@ -120,7 +120,7 @@ let ``Test char for keypath`` () =
   let c = 'a'
   sprintf """{ "a": {"b": "%c"}}""" c
   |> Json.parse
-  |> Result.bind (Json.charForKeyPath "a.b")
+  |> Result.bind (Json.char "a.b")
   |> requal <| Ok c
 
 
@@ -129,7 +129,7 @@ let ``Test string for keypath`` () =
   let s = "Test string for keypath"
   sprintf """{ "a": {"b": "%s"}}""" s
   |> Json.parse
-  |> Result.bind (Json.stringForKeyPath "a.b")
+  |> Result.bind (Json.string "a.b")
   |> requal <| Ok s
 
 [<Fact>]
@@ -139,7 +139,7 @@ let ``Test date time for keypath`` () =
   let kv = new KeyValuePair<string, JsonValue>("key", JsonPrimitive(dt))
   obj.Add(kv)
   obj
-  |> Json.dateTimeForKeyPath "key"
+  |> Json.dateTime "key"
   |> requal <| Ok dt
 
 [<Fact>]
@@ -149,7 +149,7 @@ let ``Test date time offset for keypath`` () =
   let kv = new KeyValuePair<string, JsonValue>("key", JsonPrimitive(dto))
   obj.Add(kv)
   obj
-  |> Json.dateTimeOffsetForKeyPath "key"
+  |> Json.dateTimeOffset "key"
   |> requal <| Ok dto
 
 [<Fact>]
@@ -159,7 +159,7 @@ let ``Test time span for keypath`` () =
   let kv = new KeyValuePair<string, JsonValue>("key", JsonPrimitive(ts))
   obj.Add(kv)
   obj
-  |> Json.timeSpanForKeyPath "key"
+  |> Json.timeSpan "key"
   |> requal <| Ok ts
 
 [<Fact>]
@@ -169,7 +169,7 @@ let ``Test uri for keypath`` () =
   let kv = new KeyValuePair<string, JsonValue>("key", JsonPrimitive(uri))
   obj.Add(kv)
   obj
-  |> Json.uriForKeyPath "key"
+  |> Json.uri "key"
   |> requal <| Ok uri
 
 [<Fact>]
@@ -179,5 +179,5 @@ let ``Test guid for keypath`` () =
   let kv = new KeyValuePair<string, JsonValue>("key", JsonPrimitive(guid))
   obj.Add(kv)
   obj
-  |> Json.guidForKeyPath "key"
+  |> Json.guid "key"
   |> requal <| Ok guid

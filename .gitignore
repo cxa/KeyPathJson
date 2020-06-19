@@ -1,4 +1,7 @@
 
+.DS_Store
+.ionide
+
 # Created by https://www.gitignore.io/api/fsharp,visualstudio
 
 ### fsharp ###

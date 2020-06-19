@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>KeyPathJson</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>CHEN Xian-an</Authors>
     <Description>Safe and key-path-able JSON navigator for System.Json</Description>
     <Copyright>2018 — 2020 © CHEN Xian-an</Copyright>

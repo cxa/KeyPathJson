@@ -3,7 +3,6 @@ namespace KeyPathJson
 module Json =
   open System
   open System.Json
-  open FSharp.Core
 
   let load stream =
     try Ok <| JsonValue.Load(stream=stream)

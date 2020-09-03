@@ -2,6 +2,12 @@
 
 Safe and key-path-able JSON navigator for `System.Json`.
 
+(For navigating `System.Text.Json`, use [JPath](https://github.com/cxa/JPath))
+
+## Install
+
+Simply drop `KeyPathJson.fsproj` or `KeyPathJson.fs` to your project, or search `KeyPathJson` on NuGet.
+
 ## Example
 
 Given a JSON like this
@@ -22,19 +28,19 @@ Given a JSON like this
 }
 ```
 
-Say you need to acess the second `menuitem`'s `value`, with `KeyPathJson` this is a piece of cake:
+Say you need to access the second `menuitem`'s `value`, with `KeyPathJson` this is a piece of cake:
 
 ```fsharp
 open KeyPathJson
 
+// result is a Result<string, exn>
 let result =
   Json.parse jsonStr
   |> Json.string "menu.popup.menuitem.1.value"
 
-// result is a Result<string, exn>
 ```
 
-Onething to aware is that you must use number as key to access array, like `menuitem.1` in above example.
+One thing to aware is that you must use a number as a key to access array, like `menuitem.1` in the above example.
 
 Except accessing string, `KeyPathJson` also provides:
 
